@@ -17,7 +17,7 @@ public class Exercise6_20 {
 		Scanner input = new Scanner(System.in);
 		while (true) {
 			System.out.print("Enter a string: ");
-			String s = input.next();
+			String s = input.nextLine();
 			System.out.printf("'%s' is %s characters long\n", s, s.length());
 			System.out.printf("there are %s letters in '%s'\n", countLetters(s),s);
 		}
