@@ -2,7 +2,7 @@ package module_1;
 
 /*
 Author: Randall Dexter
-Date: Feb 14
+Date: Feb 14 and Feb 16
 
 Sample input/output:
 	income = $200.00,   expense = $100.00,  months = 3, savings = $300.00
@@ -29,9 +29,9 @@ class Mod1ExamPart1 {
             System.out.print("Enter number of months you are saving: ");
             months = input.nextInt();
             
-            savings = totalSaving(income, expense, savings);
+            savings = totalSaving(income, expense, months);
             
-            System.out.printf("After %d months you will have saved $%.2f", months, savings);
+            System.out.printf("After %d month(s) you will have saved $%.2f", months, savings);
         }
 
 	 
@@ -40,9 +40,14 @@ class Mod1ExamPart1 {
         // The method result is worth 3 pts
         // The method should contain a loop calculating savings for each month
 	
-	private static double totalSaving(double income, double expense, double savings) {
-		// TODO Auto-generated method stub
-		return 0;
+	private static double totalSaving(double income, double expense, double months) {
+		double savings = 0;
+		
+		for(int i = 0; i<months; i++) {
+			savings = savings+income;
+			savings = savings-expense;
+		}
+		
+		return savings;
 	}  
-            // The loop is worth 3 pts
 }
