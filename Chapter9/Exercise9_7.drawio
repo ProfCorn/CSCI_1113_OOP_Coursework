@@ -1,9 +1,18 @@
-<mxfile host="app.diagrams.net" modified="2024-02-27T16:16:08.240Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" version="23.1.7" etag="dH_SpdcWR0YWdvESKM98" type="github">
+<mxfile host="app.diagrams.net" modified="2024-02-27T16:35:46.423Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="B2wa_b2DTSlwaBdVI7Dg" version="23.1.7" type="github">
   <diagram name="Page-1" id="lgMhn1L4xMq7JEpC2YKC">
-    <mxGraphModel>
+    <mxGraphModel dx="834" dy="321" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="XmR2WIq8wX1BM2f5QS7f-1" value="Account" style="swimlane;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="140" width="200" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="XmR2WIq8wX1BM2f5QS7f-2" value="id: Int 0&lt;br&gt;balance: double 0&lt;br&gt;annualInterestRate: double 0&lt;br&gt;dateCreated: Date" style="rounded=0;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="XmR2WIq8wX1BM2f5QS7f-1">
+          <mxGeometry y="30" width="200" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="XmR2WIq8wX1BM2f5QS7f-3" value="Account()&lt;br&gt;Account(id: double, balance: double)&lt;br&gt;getId(): double&lt;br&gt;getBalance(): double&lt;br&gt;getAnnualIntrestRate(): double&lt;br&gt;dateCreated(); double&lt;br&gt;getMonthlyIntrestRate(): double&lt;br&gt;getMonthlyIntrest(): double&lt;br&gt;withdrawl(amount: double)&lt;br&gt;deposit(amount: double)&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="XmR2WIq8wX1BM2f5QS7f-1">
+          <mxGeometry y="110" width="200" height="180" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
