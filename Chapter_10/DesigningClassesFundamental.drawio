@@ -1,9 +1,20 @@
-<mxfile host="app.diagrams.net" modified="2024-03-21T14:20:05.386Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" version="24.0.7" etag="EfQgcYRk1OThmBdKlFJC" type="github">
+<mxfile host="app.diagrams.net" modified="2024-03-21T14:30:13.611Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="Lxlq0cgJ-P4T2ALMNYay" version="24.0.7" type="github">
   <diagram name="Page-1" id="-TQvoxb3krFEMFaAyEnY">
-    <mxGraphModel>
+    <mxGraphModel dx="860" dy="358" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="O5Vcv2yGAh6SBWYjFUUD-1" value="MyInteger" style="swimlane;whiteSpace=wrap;html=1;startSize=23;" vertex="1" parent="1">
+          <mxGeometry x="340" y="70" width="330" height="420" as="geometry">
+            <mxRectangle x="340" y="70" width="140" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="O5Vcv2yGAh6SBWYjFUUD-2" value="value: int" style="whiteSpace=wrap;html=1;" vertex="1" parent="O5Vcv2yGAh6SBWYjFUUD-1">
+          <mxGeometry y="30" width="330" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="O5Vcv2yGAh6SBWYjFUUD-3" value="MyInteger()&lt;br&gt;MyInteger(newValue: int)&lt;br&gt;getValue(): int&lt;div&gt;isEven(): bool&lt;/div&gt;&lt;div&gt;isOdd(): bool&lt;br&gt;&lt;/div&gt;&lt;div&gt;isPrime(): bool&lt;/div&gt;&lt;div&gt;&lt;div&gt;isEven(testValue: int): bool&lt;/div&gt;&lt;div&gt;isOdd(&lt;span style=&quot;background-color: initial;&quot;&gt;testValue: int&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;): bool&lt;/span&gt;&lt;/div&gt;&lt;div&gt;isPrime(&lt;span style=&quot;background-color: initial;&quot;&gt;testValue: int&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;): bool&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;equals(testValue: int): bool&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;equals(testValue: MyInteger&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;): bool&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;parseInt(testChars: char[]): int&lt;/span&gt;&lt;/div&gt;&lt;div&gt;parseInt(testString: String): int&lt;/div&gt;" style="whiteSpace=wrap;html=1;" vertex="1" parent="O5Vcv2yGAh6SBWYjFUUD-1">
+          <mxGeometry y="110" width="330" height="300" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
