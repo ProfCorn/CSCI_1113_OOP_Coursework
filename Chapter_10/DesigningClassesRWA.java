@@ -9,7 +9,7 @@ import java.util.*;
  * Explanation:
  * 
 */
-public class Template {
+public class DesigningClassesRWA {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
