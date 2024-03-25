@@ -6,7 +6,7 @@ import java.util.*;
  * Author:  Randall Dexter
  * Date: Feb 27
  * 
- * Explanation: Creates and manages a financial account
+ * Explanation: Creates and manages an ATM
  * 
 */
 public class Exercise9_7 {
@@ -14,64 +14,61 @@ public class Exercise9_7 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner input = new Scanner(System.in);
-		System.out.println("Create a new Account");
-		System.out.println("Input the following information");
-		System.out.println("Account Id: ");
-		double tempId = input.nextDouble();
-		System.out.println("Current Balance: $");
-		double tempBal = input.nextDouble();
-		System.out.println("Annual interst rate (in percent increase per year): ");
-		double tempIntrest = input.nextDouble();
-		Account userAccount = new Account(tempId, tempBal, tempIntrest);
-
+		Account[] accounts = new Account[10];
+		for(int i =0; i<10; i++) {
+			accounts[i] = new Account(i);
+		}
 		while(true) {
-			System.out.println("\n\nWhat would you like to do? (input the number before the action)");
-			System.out.println("1: Get Id");
-			System.out.println("2: Get Balance");
-			System.out.println("3: Get Annual Intrest Rate (in percent increase per year)");
-			System.out.println("4: Get the date this account was created");
-			System.out.println("5: Get Monthly Intrest Rate (in percent increase per month)");
-			System.out.println("6: Get Monthly Intrest");
-			System.out.println("7: Withdrawl");
-			System.out.println("8: Deposit");
+			System.out.println("\n\nEnter an id: ");
+			int ca = input.nextInt();
+			
+			if (ca>=0&&ca<=9) {
+				boolean sin = true;
+			while (sin) {
+				
+			
+			System.out.println("\ncurrent id ("+ca+")\n");
+			System.out.println("Main menu");
+			
+			System.out.println("1: Get Balance");
+			System.out.println("2: Withdrawl");
+			System.out.println("3: Deposit");
+			System.out.println("4: Exit");
 			System.out.print(" : ");
 			int user = input.nextInt();
+
 			System.out.print("\n\n");
+			
 			switch(user) {
 			
+			
 			case 1:
-				System.out.printf("The user account Id is %.0f\n", userAccount.getId());
+				System.out.printf("The user account balance is $%.2f\n", accounts[ca].getBalance());
 				break;
+			
 			case 2:
-				System.out.printf("The user account balance is $%.2f\n", userAccount.getBalance());
-				break;
-			case 3:
-				System.out.printf("The user account Annual Intrest Rate is %.2f%%\n", userAccount.getAnnualIntrestRate());
-				break;
-			case 4:
-				System.out.printf("The user account start date was %s\n", userAccount.dateCreated());
-				break;
-			case 5:
-				System.out.printf("The user account monthly intrest rate is %.2f%%\n", userAccount.getMonthlyIntrestRate());
-				break;
-			case 6:
-				System.out.printf("The user account monthly intrest is $%.2f\n", userAccount.getMonthlyIntrest());
-				break;
-			case 7:
-				System.out.printf("The current balance is $%.2f\n", userAccount.getBalance());
+				System.out.printf("The current balance is $%.2f\n", accounts[ca].getBalance());
 				System.out.print("How much would you like to withdrawl: $");
 				double tempDoubleW = input.nextDouble();
-				userAccount.withdrawl(tempDoubleW);
-				System.out.printf("The new balance is $%.2f\n", userAccount.getBalance());
+				accounts[ca].withdrawl(tempDoubleW);
+				System.out.printf("The new balance is $%.2f\n", accounts[ca].getBalance());
 				break;
-			case 8:
-				System.out.printf("The current balance is $%.2f\n", userAccount.getBalance());
+			case 3:
+				System.out.printf("The current balance is $%.2f\n", accounts[ca].getBalance());
 				System.out.print("How much would you like to deposit: $");
 				double tempDoubleD = input.nextDouble();
-				userAccount.deposit(tempDoubleD);
-				System.out.printf("The new balance is $%.2f\n", userAccount.getBalance());
+				accounts[ca].deposit(tempDoubleD);
+				System.out.printf("The new balance is $%.2f\n", accounts[ca].getBalance());
 				break;
-
+			case 4:
+				System.out.println("\nsigning out\n");
+				sin = false;
+				break;
+			} 
+			}
+			}
+			else {
+				System.out.println("That is not a valid account id\n");
 			}
 		}
 	}
@@ -89,7 +86,13 @@ class Account{
 		annualIntrestRate = 0;
 		dateCreated = new Date();
 	}
-	Account(double newId, double newBal, double newIntrestRate){
+	Account(int newId){
+		id = newId;
+		balance = 100;
+		annualIntrestRate = 5;
+		dateCreated = new Date();
+	}
+	Account(int newId, double newBal, double newIntrestRate){
 		id = newId;
 		balance = newBal;
 		annualIntrestRate = newIntrestRate;
