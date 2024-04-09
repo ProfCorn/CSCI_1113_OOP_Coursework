@@ -9,7 +9,7 @@ import java.util.*;
  * Explanation:
  * 
 */
-public class Template {
+public class InheritanceSkillRWA {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -29,9 +29,10 @@ public class Template {
 				tri.filled = true;
 			}
 			System.out.println("What color is the triangle?: ");
+			input.nextLine();
 			tri.color = input.nextLine();
-			System.out.print(tri.toString());
-			System.out.print("Area: "+ tri.getArea()+" Perimeter: "+tri.getPerimeter()+" Color: "+ tri.color+" filled: "+ tri.filled);
+			System.out.println(tri.toString());
+			System.out.print("Area: "+ tri.getArea()+" Perimeter: "+tri.getPerimeter()+" Color: "+ tri.color+"\nDate Created: "+tri.dateCreated()+" Filled: "+ tri.filled+"\n\n");
 		}
 
 	}
