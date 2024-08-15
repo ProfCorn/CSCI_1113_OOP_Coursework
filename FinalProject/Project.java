@@ -53,10 +53,15 @@ public class Project {
 					deck.remove(tempI);	
 				}
 			}
+			//Enemy Stuff
 			
-			/*
-			 * add enemy stuff here
-			 */
+			System.out.println("Enemy Health: "+Enemy.health);
+			System.out.println("Enemy Attack Damage: "+Enemy.attackDamage);
+			
+			
+			
+			//Player Stuff
+			
 			System.out.println("Health: "+Player.health);
 			System.out.println("Shield: "+Player.shield);
 			System.out.println("Gold: "+gold);
@@ -206,6 +211,8 @@ public class Project {
 class enemy{
 	int health;
 	int type;
+	int attackType;
+	int attackDamage;
 	
 }
 class player{
@@ -268,5 +275,6 @@ class Shield extends Card{
 	public void Use(ArrayList<Card> deck, ArrayList<Card> discard, ArrayList<Card> hand, enemy Enemy, player Player) {
 		
 		System.out.println("Added "+amount+" Shield\n");
+		Player.shield = Player.shield + amount;
 	}
 }
