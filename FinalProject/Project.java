@@ -34,8 +34,9 @@ public class Project {
 		int gold = 0;
 		
 		while(true) {
-			energy = maxEnergy;
-			Player.shield = 0;
+		    while(energy!=0){
+			
+			
 			//if hand is not full then pick up cards till full
 			if (hand.size()<handSize) {
 				for (int i = hand.size(); i <handSize; i++) {
@@ -96,9 +97,38 @@ public class Project {
 				hand.get(tempI-1).Use(deck, discard, hand, Enemy, Player);
 				discard.add(hand.get(tempI-1));
 				hand.remove(tempI-1);
+				energy = energy - 1;
 			}
-				
-			
+		}
+		if (hand.size()<handSize) {
+				for (int i = hand.size(); i <handSize; i++) {
+					//if out of cards in deck shuffle discard into deck
+					if(deck.size()==0) {
+						System.out.println("Shuffled discard into deck");
+						for(Card card : discard) {
+							deck.add(card);
+						}
+						discard.clear();
+					}
+					//pick random card then add it to hand
+					int tempI = (int)(Math.random()*deck.size());
+					hand.add(deck.get(tempI));
+					deck.remove(tempI);	
+				}
+			}
+		System.out.println("Enemy Health: "+Enemy.health);
+		System.out.println("Enemy Attack Damage: "+Enemy.attackDamage);
+		System.out.println("Health: "+Player.health);
+		System.out.println("Shield: "+Player.shield);
+		System.out.println("Gold: "+gold);
+		System.out.println("Energy: "+energy+"/"+maxEnergy);
+		CardUI(hand);
+		System.out.print("Press enter to end your turn");
+		//Grabs choice
+		input.nextLine();
+		//Enemy Attacks
+		energy = maxEnergy;
+		Player.shield = 0;
 		}
 	}
 	private static void CardUI(Card card) {
