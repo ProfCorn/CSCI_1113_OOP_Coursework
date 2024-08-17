@@ -2,9 +2,9 @@ import java.util.*;
 
 /*
  * Author:  Randall Dexter
- * Date: 
+ * Date: Aug 17
  * 
- * Explanation:
+ * Explanation: Simple Slay the spire inspired game with basic ideas that will set up for future development
  * 
 */
 public class Project {
@@ -18,6 +18,8 @@ public class Project {
 		Draw DrawTemp = new Draw();
 		enemy Enemy = new enemy();
 		player Player = new player();
+		Player.health = 100;
+		Player.maxHealth = 100;
 		for (int i = 0; i<=3;i++) {
 			deck.add(AttackTemp);
 			deck.add(ShieldTemp);	
@@ -32,11 +34,12 @@ public class Project {
 		int energy = 3;
 		int maxEnergy = 3;
 		int gold = 0;
-		
+		Enemy.health = (int)Math.floor(Math.random() * 5)+15;
+		Enemy.attackDamage = (int)Math.floor(Math.random() * 3)+2;
+
 		while(true) {
-		    while(energy!=0){
-			
-			
+
+		    while(energy>0){
 			//if hand is not full then pick up cards till full
 			if (hand.size()<handSize) {
 				for (int i = hand.size(); i <handSize; i++) {
@@ -54,81 +57,109 @@ public class Project {
 					deck.remove(tempI);	
 				}
 			}
-			//Enemy Stuff
 			
-			System.out.println("Enemy Health: "+Enemy.health);
-			System.out.println("Enemy Attack Damage: "+Enemy.attackDamage);
-			
-			
-			
-			//Player Stuff
-			
-			System.out.println("Health: "+Player.health);
-			System.out.println("Shield: "+Player.shield);
-			System.out.println("Gold: "+gold);
-			System.out.println("Energy: "+energy+"/"+maxEnergy);
-			CardUI(hand);
-			System.out.print("What card would you like to use (0 to bring up help screen): ");
-			//Grabs choice
-			int tempI = input.nextInt();
-			input.nextLine();
-			
-			if (tempI == 0) {
-				System.out.println("This is the help screen, here we will go over the basics\n");
-				System.out.println("Gold: "+gold+" <-- This is your gold, you get gold from killing enemies and you can spend it on upgrades in the shop\n");
-				System.out.println("Energy: "+energy+"/"+maxEnergy+" <-- This is your energy, the amount of energy you have left is on the left and your total energy is on the right");
-				System.out.println("Energy is used to play cards\n");
-				CardUI(hand);
-				System.out.println("This is your hand, here you see what cards you can play");
-				System.out.println("The number on the left is the energy cost while the number on the right is the amount of the action that is applied\n\n");
-				
-				CardUI(AttackTemp);
-				System.out.println("This is the Attack card, play this card to deal 4 damage to the enemy");
-				CardUI(ShieldTemp);
-				System.out.println("This is the Shield card, play this card to Add 3 shield to yourself");
-				System.out.println("Shield decays each turn");
-				CardUI(DrawTemp);
-				System.out.println("This is the draw card, play this card to draw 2 extra cards");
-				
-				System.out.println("(click enter to continue)");
-				String StrTemp = input.nextLine();
+    		
+    			//Enemy Stuff
+    			
+    			System.out.println("Enemy Health: "+Enemy.health);
+    			System.out.println("Enemy Attack Damage: "+Enemy.attackDamage);
+    			
+    			
+    			
+    			//Player Stuff
+    			
+    			System.out.println("Health: "+Player.health+"/"+Player.maxHealth);
+    			System.out.println("Shield: "+Player.shield);
+    			System.out.println("Gold: "+gold);
+    			System.out.println("Energy: "+energy+"/"+maxEnergy);
+    			CardUI(hand);
+    			System.out.print("What card would you like to use (0 to bring up help screen): ");
+    			//Grabs choice
+    			int tempI = input.nextInt();
+    			input.nextLine();
+    			
+    			if (tempI == 0) {
+    				System.out.println("This is the help screen, here we will go over the basics\n");
+    				System.out.println("Gold: "+gold+" <-- This is your gold, you get gold from killing enemies and you can spend it on upgrades in the shop\n");
+    				System.out.println("Energy: "+energy+"/"+maxEnergy+" <-- This is your energy, the amount of energy you have left is on the left and your total energy is on the right");
+    				System.out.println("Energy is used to play cards\n");
+    				CardUI(hand);
+    				System.out.println("This is your hand, here you see what cards you can play");
+    				System.out.println("The number on the left is the energy cost while the number on the right is the amount of the action that is applied\n\n");
+    				
+    				CardUI(AttackTemp);
+    				System.out.println("This is the Attack card, play this card to deal 4 damage to the enemy");
+    				CardUI(ShieldTemp);
+    				System.out.println("This is the Shield card, play this card to Add 3 shield to yourself");
+    				System.out.println("Shield decays each turn");
+    				CardUI(DrawTemp);
+    				System.out.println("This is the draw card, play this card to draw 2 extra cards");
+    				
+    				System.out.println("(click enter to continue)");
+    				String StrTemp = input.nextLine();
+    			}
+    			else {
+    				hand.get(tempI-1).Use(deck, discard, hand, Enemy, Player);
+    				discard.add(hand.get(tempI-1));
+    				hand.remove(tempI-1);
+    				energy = energy - 1;
+    			}
+    			if (Enemy.health<=0){
+			    System.out.println("You killed the enemy!");
+			    energy=-1;
+			    int tempCoin = (int)Math.floor(Math.random() * 4)+5;
+			    gold = gold + tempCoin;
+			    System.out.println("The enemy dropped "+tempCoin+" coins!");
+			    System.out.println("You now have "+gold+" coins!");
+			    System.out.println("");
 			}
-			else {
-				hand.get(tempI-1).Use(deck, discard, hand, Enemy, Player);
-				discard.add(hand.get(tempI-1));
-				hand.remove(tempI-1);
-				energy = energy - 1;
-			}
+    		
 		}
-		if (hand.size()<handSize) {
-				for (int i = hand.size(); i <handSize; i++) {
-					//if out of cards in deck shuffle discard into deck
-					if(deck.size()==0) {
-						System.out.println("Shuffled discard into deck");
-						for(Card card : discard) {
-							deck.add(card);
-						}
-						discard.clear();
-					}
-					//pick random card then add it to hand
-					int tempI = (int)(Math.random()*deck.size());
-					hand.add(deck.get(tempI));
-					deck.remove(tempI);	
-				}
-			}
-		System.out.println("Enemy Health: "+Enemy.health);
-		System.out.println("Enemy Attack Damage: "+Enemy.attackDamage);
-		System.out.println("Health: "+Player.health);
-		System.out.println("Shield: "+Player.shield);
-		System.out.println("Gold: "+gold);
-		System.out.println("Energy: "+energy+"/"+maxEnergy);
-		CardUI(hand);
-		System.out.print("Press enter to end your turn");
-		//Grabs choice
-		input.nextLine();
-		//Enemy Attacks
-		energy = maxEnergy;
-		Player.shield = 0;
+		if(energy!=-1){
+    		if (hand.size()<handSize) {
+    			for (int i = hand.size(); i <handSize; i++) {
+    				//if out of cards in deck shuffle discard into deck
+    				if(deck.size()==0) {
+    					System.out.println("Shuffled discard into deck");
+    					for(Card card : discard) {
+    						deck.add(card);
+    					}
+    					discard.clear();
+    				}
+    				//pick random card then add it to hand
+    				int tempI = (int)(Math.random()*deck.size());
+    				hand.add(deck.get(tempI));
+    				deck.remove(tempI);	
+    			}
+    		}
+    		System.out.println("Enemy Health: "+Enemy.health);
+    		System.out.println("Enemy Attack Damage: "+Enemy.attackDamage);
+    	    System.out.println("Health: "+Player.health+"/"+Player.maxHealth);
+    		System.out.println("Shield: "+Player.shield);
+    		System.out.println("Gold: "+gold);
+    		System.out.println("Energy: "+maxEnergy+"/"+maxEnergy);
+    		CardUI(hand);
+    		System.out.print("Press enter to end your turn");
+    		//Grabs choice
+    		input.nextLine();
+    		//Enemy Attacks
+    		energy = maxEnergy;
+    		
+    		if(Enemy.attackDamage-Player.shield>0){
+    		    Player.health = Player.health-(Enemy.attackDamage-Player.shield);
+    		    System.out.println();
+    		    System.out.println("The enemy delt "+(Enemy.attackDamage-Player.shield)+" damage");
+    		    System.out.println();
+    		}
+    		
+    		Player.shield = 0;
+    		
+    		}
+    	else{
+    	    Enemy.health = (int)Math.floor(Math.random() * 5)+15;
+    	    energy = maxEnergy;
+
+    	}
 		}
 	}
 	private static void CardUI(Card card) {
@@ -247,6 +278,7 @@ class enemy{
 }
 class player{
 	int health;
+	int maxHealth;
 	int shield;
 }
 
