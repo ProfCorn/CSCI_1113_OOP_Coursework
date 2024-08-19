@@ -40,6 +40,7 @@ public class Project {
 		while(true) {
 
 		    while(energy>0){
+		    	
 			//if hand is not full then pick up cards till full
 			if (hand.size()<handSize) {
 				for (int i = hand.size(); i <handSize; i++) {
@@ -103,19 +104,20 @@ public class Project {
     				discard.add(hand.get(tempI-1));
     				hand.remove(tempI-1);
     				energy = energy - 1;
-    			}
+    				
+    				}
     			if (Enemy.health<=0){
-			    System.out.println("You killed the enemy!");
-			    energy=-1;
-			    int tempCoin = (int)Math.floor(Math.random() * 4)+5;
-			    gold = gold + tempCoin;
-			    System.out.println("The enemy dropped "+tempCoin+" coins!");
-			    System.out.println("You now have "+gold+" coins!");
-			    System.out.println("");
+				    System.out.println("You killed the enemy!");
+				    energy=-1;
+				    int tempCoin = (int)Math.floor(Math.random() * 4)+5;
+				    gold = gold + tempCoin;
+				    System.out.println("The enemy dropped "+tempCoin+" coins!");
+				    System.out.println("You now have "+gold+" coins!");
+				    System.out.println("");
 			}
     		
 		}
-		if(energy!=-1){
+		if(energy==0){
     		if (hand.size()<handSize) {
     			for (int i = hand.size(); i <handSize; i++) {
     				//if out of cards in deck shuffle discard into deck
@@ -137,7 +139,7 @@ public class Project {
     	    System.out.println("Health: "+Player.health+"/"+Player.maxHealth);
     		System.out.println("Shield: "+Player.shield);
     		System.out.println("Gold: "+gold);
-    		System.out.println("Energy: "+maxEnergy+"/"+maxEnergy);
+    		System.out.println("Energy: 0/"+maxEnergy);
     		CardUI(hand);
     		System.out.print("Press enter to end your turn");
     		//Grabs choice
@@ -153,13 +155,14 @@ public class Project {
     		}
     		
     		Player.shield = 0;
-    		
+    		Enemy.attackDamage = (int)Math.floor(Math.random() * 3)+2;
     		}
     	else{
     	    Enemy.health = (int)Math.floor(Math.random() * 5)+15;
+    		Enemy.attackDamage = (int)Math.floor(Math.random() * 3)+2;
     	    energy = maxEnergy;
 
-    	}
+    		}
 		}
 	}
 	private static void CardUI(Card card) {
